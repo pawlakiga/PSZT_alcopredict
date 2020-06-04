@@ -1,5 +1,6 @@
 import os
 import pandas
+import numpy as np
 from numpy import sort
 
 
@@ -16,34 +17,23 @@ class StudentsData:
                     'Mjob', 'Fjob', 'reason', 'nursery', 'internet'],
             inplace=True, ignore_index=True)
         data.sort_index(inplace=True, kind='mergesort')
-        self.data = data
-
-    def set_classes(self, column_name):
-        if column_name != 'Walc' and column_name != 'Dalc':
-            return -1
-        else:
-            self.classes = sort(self.data[column_name].unique())
-            self.class_column_name = column_name
-            return 1
-
-    def set_attributes(self):
+        self.objects = data
         self.attributes = ['school', 'sex', 'age', 'address', 'famsize', 'Pstatus', 'Medu', 'Fedu',
                            'Mjob', 'Fjob', 'reason', 'guardian', 'traveltime', 'studytime',
                            'failures', 'schoolsup', 'famsup', 'paid', 'activities', 'nursery',
                            'higher', 'internet', 'romantic', 'famrel', 'freetime', 'goout', 'health', 'absences', 'G1',
                            'G2', 'G3']
 
-    def get_all_attribute_values(self, column_name):
-        return self.data[column_name].unique()
 
-    def get_object_attribute_value(self, index, column_name):
-        return self.data.loc[index, column_name]
+name = "F"
+data = StudentsData()
+print(data.objects.query('sex=='+"\""+name+"\""))
 
-    def get_object_class(self, index):
-        return self.data.loc[index, self.class_column_name]
+#print(students_data.classes)
+#print(students_data.objects.loc[4].loc['sex'])
+#print(list(students_data.objects.columns))
+#students_data.attributes.remove('school')
+#print(students_data.attributes)
+#print(students_data.objects.columns.remove('sex'))
 
-
-students_data = StudentsData()
-students_data.set_classes('Dalc')
-print(students_data.classes)
-print(students_data.data.columns)
+#print(len(students_data.class_members(1)))
