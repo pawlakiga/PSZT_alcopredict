@@ -27,7 +27,8 @@ class StudentsData:
 
 name = "F"
 data = StudentsData()
-print(data.objects.query('sex=='+"\""+name+"\""))
+print("sex==" + str(name))
+print(data.objects.query("absences==0").query("G1==13"))
 
 #print(students_data.classes)
 #print(students_data.objects.loc[4].loc['sex'])
