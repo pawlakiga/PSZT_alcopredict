@@ -1,16 +1,34 @@
+"""
+Pawlak Iga, Michalski Marcin
+PSZT Projekt 2
+Alcohol Consumption Prediction
+Data
+"""
+
 import os
 import pandas
 import numpy as np
 from numpy import sort
 
+"""
+Class representing data used for classification
+Fields:     objects - DataFrame
+            attributes - names of the columns of the DataFrame that don't hold class values 
+
+Methods:    load_data(file1_path, file2_path) - load data from .csv files at given file paths
+
+"""
+
 
 class StudentsData:
 
     def __init__(self):
-        data_mat = pandas.read_csv(
-            'C:\\Users\\Iga\\Documents\\GitHub\\PSZT_alcopredict\\student-alcohol-consumption\\student-mat.csv')
-        data_port = pandas.read_csv(
-            'C:\\Users\\Iga\\Documents\\GitHub\\PSZT_alcopredict\\student-alcohol-consumption\\student-por.csv')
+        self.objects = None
+        self.attributes = list()
+
+    def load_data(self, file1_path, file2_path=None):
+        data_mat = pandas.read_csv(file1_path)
+        data_port = pandas.read_csv(file2_path)
         data = data_mat.append(data_port, ignore_index=True)
         data.drop_duplicates(
             subset=['school', 'sex', 'age', 'address', 'famsize', 'Pstatus', 'Medu', 'Fedu',
@@ -23,18 +41,3 @@ class StudentsData:
                            'failures', 'schoolsup', 'famsup', 'paid', 'activities', 'nursery',
                            'higher', 'internet', 'romantic', 'famrel', 'freetime', 'goout', 'health', 'absences', 'G1',
                            'G2', 'G3']
-
-
-name = "F"
-data = StudentsData()
-print("sex==" + str(name))
-print(data.objects.query("absences==0").query("G1==13"))
-
-#print(students_data.classes)
-#print(students_data.objects.loc[4].loc['sex'])
-#print(list(students_data.objects.columns))
-#students_data.attributes.remove('school')
-#print(students_data.attributes)
-#print(students_data.objects.columns.remove('sex'))
-
-#print(len(students_data.class_members(1)))
