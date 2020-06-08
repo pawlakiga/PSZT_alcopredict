@@ -84,7 +84,7 @@ sample = data.objects.query("index % 30 == 7")
 
 id3 = ID3.ID3(sample,'Walc', attributes[it])
 tree = id3.build_tree(None, attributes[it], sample)
-tree.save_to_file('nodes', 'tree')
+tree.save_to_file('AlkoPSZT/nodes', 'AlkoPSZT/tree')
 
 object = data.objects.loc[14]
 print(object['Walc'])
