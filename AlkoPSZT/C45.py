@@ -87,6 +87,7 @@ class C45:
                     index = current_node.parent.children.index(current_node)
                     current_node.parent.children[index] = alternative_leaf
                     for l in current_node.leaves:
-                        leaves.remove(l)
+                        if l in leaves:
+                            leaves.remove(l)
                 current_node = current_node.parent
         return ID3.Tree(current_node)
