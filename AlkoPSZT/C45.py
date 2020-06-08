@@ -12,12 +12,12 @@ import pickle
 
 """
 Class implementing the C45 tree pruning algorithm
-Fields:     id3 - ID3 object, used to build an ID3 tree if one is note provided by the user
+Fields:     id3 - ID3 object, used to build an ID3 tree if one is not provided by the user
             id3tree - represents the tree built using ID3 algorithm at the same training data set
             
-Methods:    read_id3_tree - loads a tree into field id3tree from file named file_name, returns 1 if success and -1 if the loaded 
+Methods:    read_id3_tree - loads a tree into field id3tree from file named file_name, returns 1 if success and -1 if the loaded file
                             is not a tree
-            get_subtree_training_error(core_node) - counts the error with classification of a subtree under core_node 
+            get_subtree_training_error(core_node) - calculates the error with classification of a subtree under core_node 
             
             estimate_subtree_test_error (core_node) - estimates the classification error in a subtree under core_node on test data set
             
